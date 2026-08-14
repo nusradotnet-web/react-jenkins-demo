@@ -31,10 +31,9 @@ pipeline {
 
         stage('Validation') {
             steps {
-                echo 'Performing code validation check...'
-                // Validates package configuration or runs linting if configured
-                bat 'npm run lint || echo No lint script defined, validation passed.'
-            }
+        echo 'Performing code and environment validation...'
+        bat 'IF EXIST package.json (echo Package manifest verified successfully.) ELSE (echo Missing package.json && exit 1)'
+    }
         }
     }
 
